@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import About from "./components/About";
 import TextForm from "./components/TextForm";
 import {BrowserRouter , Routes, Route, Link} from "react-router-dom";
+import Login from "./components/Login";
 
 
 
@@ -11,7 +12,7 @@ import {BrowserRouter , Routes, Route, Link} from "react-router-dom";
 const App = () => {
   const [mode, setMode] = useState("light"); //whether dark mode is enable or not
   const [modeTitle, setModeTitle] = useState("Dark Mode");
-
+  
   const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) =>{
@@ -55,7 +56,7 @@ const App = () => {
 
   return (
     <>
-
+<BrowserRouter>
 <Navbar
         title={oldTitle}
         mode={mode}
@@ -64,10 +65,12 @@ const App = () => {
       />
        <Alert alert={alert}/>
 
-<BrowserRouter>
-      <Routes>
+
+
+<Routes>
       <Route path="/"  element={ <TextForm alert={alert} showAlert={showAlert}/>} />
-      <Route path="/About" element={<About />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/login" element={<Login  mode={mode} />} />
       </Routes>
 </BrowserRouter>
       
